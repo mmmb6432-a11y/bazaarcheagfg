@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0f172a">
+  <title>بازارچه افغانستان</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">🛍️ بازارچه</div>
+    <button id="menuBtn" class="icon-btn" aria-label="منو">☰</button>
+    <nav id="mainNav">
+      <button data-page="home" class="nav-link active">🏠 خانه</button>
+      <button data-page="search" class="nav-link">🔎 جستجو</button>
+      <button data-page="favorites" class="nav-link">⭐ علاقه‌مندی</button>
+      <button data-page="add" class="nav-link">➕ افزودن آگهی</button>
+      <button data-page="chat" class="nav-link">💬 چت</button>
+      <button data-page="account" class="nav-link">👤 حساب</button>
+      <button data-page="settings" class="nav-link">⚙️ تنظیمات</button>
+    </nav>
+  </header>
+
+  <main>
+    <section id="homePage" class="page active-page">
+      <div class="hero">
+        <div>
+          <p class="eyebrow">خرید و فروش در افغانستان</p>
+          <h1>کالای موردنظرت را پیدا کن</h1>
+          <p>آگهی‌ها را ببین، جستجو کن و با فروشنده از داخل سایت گفتگو کن.</p>
+          <button class="primary" data-page="search">شروع جستجو</button>
+        </div>
+        <div class="hero-icon">🇦🇫</div>
+      </div>
+      <div class="section-head">
+        <h2>آگهی‌های جدید</h2>
+        <button class="text-btn" data-page="search">مشاهده همه</button>
+      </div>
+      <div id="homeProducts" class="product-grid"></div>
+    </section>
+
+    <section id="searchPage" class="page">
+      <div class="section-head"><h2>جستجوی آگهی</h2></div>
+      <div class="filters">
+        <input id="searchInput" type="search" placeholder="مثلاً موبایل، لپ‌تاپ، لباس...">
+        <select id="categoryFilter">
+          <option value="">همه دسته‌ها</option>
+          <option>موبایل</option><option>لپ‌تاپ</option><option>لوازم الکترونیکی</option>
+          <option>پوشاک</option><option>خانه و مبلمان</option><option>کتاب</option><option>سایر</option>
+        </select>
+        <select id="cityFilter">
+          <option value="">همه شهرها</option>
+          <option>کابل</option><option>هرات</option><option>قندهار</option><option>مزار شریف</option>
+          <option>جلال‌آباد</option><option>زرنج</option><option>فراه</option><option>بلخ</option>
+          <option>کندز</option><option>تخار</option><option>بامیان</option><option>غور</option>
+          <option>هلمند</option><option>فاریاب</option><option>بدخشان</option><option>بادغیس</option>
+        </select>
+      </div>
+      <div id="searchProducts" class="product-grid"></div>
+    </section>
+
+    <section id="favoritesPage" class="page">
+      <div class="section-head"><h2>⭐ علاقه‌مندی‌های من</h2></div>
+      <div id="favoriteProducts" class="product-grid"></div>
+    </section>
+
+    <section id="addPage" class="page">
+      <div class="form-card">
+        <h2>➕ افزودن آگهی</h2>
+        <p class="muted">برای ثبت آگهی باید وارد حساب خود شوی.</p>
+        <form id="productForm">
+          <label>عنوان آگهی<input id="productTitle" required maxlength="120" placeholder="مثلاً Poco X3 NFC"></label>
+          <label>قیمت به افغانی<input id="productPrice" required type="number" min="0" step="1" placeholder="مثلاً 5000"></label>
+          <label>دسته‌بندی
+            <select id="productCategory" required>
+              <option value="">انتخاب کنید</option>
+              <option>موبایل</option><option>لپ‌تاپ</option><option>لوازم الکترونیکی</option>
+              <option>پوشاک</option><option>خانه و مبلمان</option><option>کتاب</option><option>سایر</option>
+            </select>
+          </label>
+          <label>شهر
+            <select id="productCity" required>
+              <option value="">انتخاب شهر</option>
+              <option>کابل</option><option>هرات</option><option>قندهار</option><option>مزار شریف</option>
+              <option>جلال‌آباد</option><option>زرنج</option><option>فراه</option><option>بلخ</option>
+              <option>کندز</option><option>تخار</option><option>بامیان</option><option>غور</option>
+              <option>هلمند</option><option>فاریاب</option><option>بدخشان</option><option>بادغیس</option>
+            </select>
+          </label>
+          <label>توضیحات<textarea id="productDescription" maxlength="2000" placeholder="توضیح کالا..."></textarea></label>
+          <label>لینک عکس (اختیاری)<input id="productImage" type="url" placeholder="https://..."></label>
+          <button class="primary" type="submit">ثبت آگهی</button>
+        </form>
+      </div>
+    </section>
+
+    <section id="chatPage" class="page">
+      <div class="chat-layout">
+        <aside class="chat-list">
+          <h2>💬 گفتگوها</h2>
+          <div id="conversationList"><p class="muted">برای شروع، از یک آگهی روی «چت با فروشنده» بزن.</p></div>
+        </aside>
+        <div class="chat-box">
+          <div id="chatHeader" class="chat-header">یک گفتگو را انتخاب کن</div>
+          <div id="messages" class="messages"></div>
+          <form id="messageForm" class="message-form">
+            <input id="messageInput" maxlength="1000" placeholder="پیام خود را بنویس..." autocomplete="off">
+            <button class="primary" type="submit">ارسال</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section id="accountPage" class="page">
+      <div class="account-grid">
+        <div class="form-card">
+          <h2>👤 حساب کاربری</h2>
+          <div id="accountStatus"></div>
+          <form id="profileForm" hidden>
+            <label>نام نمایشی<input id="displayName" maxlength="60"></label>
+            <label>شهر
+              <select id="profileCity">
+                <option value="">انتخاب شهر</option>
+                <option>کابل</option><option>هرات</option><option>قندهار</option><option>مزار شریف</option>
+                <option>جلال‌آباد</option><option>زرنج</option><option>فراه</option><option>بلخ</option>
+                <option>کندز</option><option>تخار</option><option>بامیان</option><option>غور</option>
+                <option>هلمند</option><option>فاریاب</option><option>بدخشان</option><option>بادغیس</option>
+              </select>
+            </label>
+            <button class="primary" type="submit">ذخیره پروفایل</button>
+          </form>
+        </div>
+        <div class="form-card">
+          <h2>🔐 ورود / ثبت‌نام</h2>
+          <form id="authForm">
+            <label>ایمیل<input id="email" type="email" required autocomplete="email"></label>
+            <label>رمز عبور<input id="password" type="password" required minlength="6" autocomplete="current-password"></label>
+            <div class="row">
+              <button class="primary" type="submit">ورود</button>
+              <button id="signupBtn" class="secondary" type="button">ثبت‌نام</button>
+            </div>
+          </form>
+          <button id="resetBtn" class="text-btn" type="button">فراموشی رمز عبور</button>
+          <button id="logoutBtn" class="danger" type="button" hidden>خروج از حساب</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="settingsPage" class="page">
+      <div class="form-card">
+        <h2>⚙️ تنظیمات</h2>
+        <label class="switch-row"><span>حالت تیره</span><input id="darkToggle" type="checkbox"></label>
+        <hr>
+        <h3>حریم خصوصی</h3>
+        <p class="muted">شماره تلفن و اطلاعات حساس را در متن آگهی عمومی نکن. برای گفتگو از چت سایت استفاده کن.</p>
+        <hr>
+        <h3>حساب</h3>
+        <p class="muted">برای تغییر رمز عبور می‌توانی از گزینه «فراموشی رمز عبور» در صفحه حساب استفاده کنی.</p>
+      </div>
+    </section>
+  </main>
+
+  <div id="toast" class="toast"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="script.js"></script>
+</body>
+</html>
